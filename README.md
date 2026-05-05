@@ -45,4 +45,5 @@
 - ログイン	/login
 
 ## ＥＲ図
-![ER図](./er-diagram.png)
+![ER図](image.png)
+
