@@ -1,0 +1,300 @@
+.admin__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.admin__heading {
+    margin-bottom: 40px;
+    text-align: center;
+    color: #684e47;
+    font-size: 25px;
+}
+
+.form {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.form__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form__item-input,
+.form__item-select,
+.form__item-date {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.form__item-btn {
+    padding: 8px 20px;
+    background-color: #684e47;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form__item-reset {
+    color: #a18b7d;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #dcd6d1;
+}
+
+.admin-table__label,
+.admin-table__item {
+    padding: 15px;
+    border: 1px solid #dcd6d1;
+    text-align: left;
+}
+
+.admin-table__label {
+    padding: 15px;
+    background-color: #684e47;
+    color: #ddd;
+    font-weight: bold;
+    border-bottom: 2px solid #dcd6d1;
+}
+
+.admin-table__item {
+    padding: 15px;
+    border-bottom: 1px solid #dcd6d1;
+    color: #333;
+}
+
+.admin-table__detail-btn {
+    padding: 5px 15px;
+    border: 1px solid #a18b7d;
+    color: #a18b7d;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+.admin-table__detail-btn:hover {
+    background-color: #a18b7d;
+    color: #fff;
+}
+
+.confirm-table__inner {
+    width: 100%;
+}
+
+.admin-table__header {
+    padding: 15px;
+    width: 20%;
+    border-bottom: 1px solid #ddd;
+    color: #ddd;
+    background-color: #684e47;
+    font-weight: bold;
+}
+
+.admin-table__text {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table__text input {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.admin-table__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+}
+
+.export-btn {
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+}
+
+.modal:target {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+.modal__content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    z-index: 1001;
+}
+
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.modal-table th,
+.modal-table td {
+    padding: 15px 10px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-table th {
+    width: 30%;
+    color: #684e47;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.modal-table tr:last-child th,
+.modal-table tr:last-child td {
+    border-bottom: none;
+}
+
+.modal-table td {
+    line-height: 1.6;
+    color: #333;
+}
+
+.delete-form {
+    text-align: center;
+}
+
+.delete-btn {
+    padding: 10px 40px;
+    background-color: #ff4d4b;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #e04341;
+}
+
+.modal__close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    text-decoration: none;
+    color: #684e47;
+    font-size: 20px;
+}
+
+.admin-table__export {
+    margin-bottom: 10px;
+}
+
+.export-btn {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #eee;
+    color: #684e47;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.export-btn:hover {
+    background-color: #ddd;
+}
+
+.header-nav__button:hover {
+    background-color: #e0d9d4;
+}
+
+.admin-table__pagination {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-table__pagination nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+}
+
+.admin-table__pagination .page-link,
+.admin-table__pagination .pagination li a,
+.admin-table__pagination .pagination li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #dcd6d1;
+    background-color: #fff;
+    color: #684e47;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.admin-table__pagination li a:hover,
+.admin-table__pagination li.active span,
+.admin-table__pagination .page-item.active .page-link {
+    background-color: #684e47;
+    color: #fff;
+    border-color: #684e47;
+}
+
+.admin-table__pagination svg {
+    width: 20px;
+    height: 20px;
+}
+
+.admin-table__pagination .flex.justify-between.items-center {
+    display: block;
+}
+
+.admin-table__pagination .hidden.sm\:flex-1 {
+    display: none;
+}
