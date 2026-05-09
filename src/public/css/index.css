@@ -33,34 +33,92 @@
 }
 
 .form__label--required {
-    margin-left: 5px;
-    padding: 4px 6px;
-    border-radius: 3px;
     color: #ff0000;
+}
+
+.form__error-group {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    max-width: 600px;
 }
 
 .form__error {
-    height: 20px;
-    color: #ff0000;
+    flex: 1;
     text-align: left;
+    font-size: 14px;
+    margin-top: -10px;
+    min-height: 10px;
+    color: #ff0000;
+}
+
+.form__group-content {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
 }
 
 .form__input--text input,
+.form__input--text-name input,
+.form__input--text-tel input,
 .form__input--textarea textarea {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     padding: 10px;
     border: 1px solid #af928a;
     border-radius: 4px;
+    box-sizing: border-box;
 
     appearance: none;
 }
 
-.form__input--text input {
+.form__input--text-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.form__input--text-tel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.form__input--text-tel input {
+    flex: 1;
+    width: auto;
     height: 40px;
 }
 
-.form__input--textarea textarea {
-    height: 180px;
+.form__input--text-tel span {
+    font-weight: bold;
+}
+
+.form__input--text select {
+    width: 100%;
+    max-width: 200px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #af928a;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="%23af928a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+}
+
+.form__input--text select::-ms-expand {
+    display: none;
 }
 
 .form__button {

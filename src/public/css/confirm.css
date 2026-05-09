@@ -36,21 +36,31 @@
 .confirm-table__text {
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    font-size: 17px;
 }
 
 .confirm-table__name-field {
-    display: flex;
+    display: flex !important;
     justify-content: flex-start;
-    gap: 0;
+    gap: 20px !important;
+    width: 100%;
 }
 
-.confirm-table__name-field input {
+.confirm-table__name-field input[type="text"] {
     width: auto !important;
-    flex: none !important;
+    flex: 0 1 auto !important;
     margin: 0 !important;
     padding: 0 !important;
     border: none;
     background: transparent;
+    min-width: 50px;
+    font-size: 17px;
+}
+
+.confirm-name-text {
+    display: inline-block;
+    width: auto !important;
+    white-space: nowrap;
 }
 
 .confirm-table__name-field input[name="first_name"] {
@@ -61,6 +71,7 @@
     width: 100%;
     outline: none;
     border: none;
+    font-size: 17px;
 }
 
 .confirm-table__row:last-child .confirm-table__header,

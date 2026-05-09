@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Http\Requests\ContactRequest;
+use Illuminate\Support\Facades\Hash;
 
 class ContactController extends Controller
 {
@@ -16,14 +17,14 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
-        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tel', 'address', 'building', 'inquiry_type', 'detail']);
+        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tel01', 'tel02', 'tel03', 'address', 'building', 'inquiry_type', 'detail']);
 
         return view('confirm', compact('contact'));
     }
 
     public function store(Request $request)
     {
-        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'tel', 'address', 'building', 'detail']);
+        $contact = $request->only(['first_name', 'last_name', 'email', 'address', 'building', 'detail']);
 
         $genderMap = ['男性' =>1, '女性' =>2, 'その他' =>3];
         $contact['gender'] = $genderMap[$request->gender] ?? 3;
@@ -38,15 +39,26 @@ class ContactController extends Controller
 
         $contact['category_id'] = $categoryMap[$request->inquiry_type] ?? 5;
 
+        $contact['tel'] = $request->tel01 . $request->tel02 . $request->tel03;
+
         Contact::create($contact);
 
         return redirect('/thanks');
     }
 
-        public function thanks()
-        {
-            return view('thanks');
-        }
+    public function thanks()
+    {
+        return view('thanks');
+    }
+
+    public function register(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+    }
 
     public function admin(Request $request)
     {
@@ -88,25 +100,49 @@ class ContactController extends Controller
 
     public function export(Request $request)
     {
-        $contacts = Contact::all();
-        $csvHeader = ['ID', 'お名前', 'メールアドレス', '内容'];
-        $csvData = [];
+        $query = Contact::query();
 
-        foreach ($contacts as $contact) {
-            $csvData[] = [
-                $contact->id,
-                $contact->first_name . $contact->last_name,
-                $contact->email,
-                $contact->detail
-            ];
+        if ($request->filled('keyword')) {
+            $query->where(function($q) use ($request) {
+                $q->where('first_name', 'like', '%' . $request->keyword . '%')
+                 ->orWhere('last_name', 'like', '%' . $request->keyword . '%')
+                 ->orWhere('email', 'like', '%' . $request->keyword . '%');
+            });
         }
 
-        $response = new \Symfony\Component\HttpFoundation\StreamedResponse(function() use ($csvHeader, $csvData) {
+        if ($request->filled('gender') && $request->gender !== 'all') {
+        $query->where('gender', $request->gender);
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->date);
+        }
+
+        $response = new StreamedResponse(function() use ($query) {
             $handle = fopen('php://output', 'w');
-            fputcsv($handle, $csvHeader);
-            foreach ($csvData as $row) {
-                fputcsv($handle, $row);
+        
+            stream_filter_append($handle, 'convert.iconv.UTF-8/CP932');
+
+            fputcsv($handle, ['ID', 'お名前', 'メールアドレス', '性別', 'お問い合わせ内容']);
+
+            $query->chunk(100, function($contacts) use ($handle) {
+                foreach ($contacts as $contact) {
+                    $gender = ($contact->gender == 1) ? '男性' : (($contact->gender == 2) ? '女性' : 'その他');
+                
+                fputcsv($handle, [
+                    $contact->id,
+                    $contact->first_name . $contact->last_name,
+                    $contact->email,
+                    $gender,
+                    $contact->detail
+                ]);
             }
+        });
+
             fclose($handle);
         }, 200, [
             'Content-Type' => 'text/csv',

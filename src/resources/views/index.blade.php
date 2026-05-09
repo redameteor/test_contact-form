@@ -17,17 +17,21 @@
                 <span class="form__label--required">＊</span>
             </div>
             <div class="form__group-content">
-                <div class="form__input--text">
+                <div class="form__input--text-name">
                     <input type="text" name="first_name" placeholder="姓  山田" value="{{ old('first_name') }}">
                     <input type="text" name="last_name" placeholder="名  一郎" value="{{ old('last_name') }}">
                 </div>
-                <div class="form__error">
-                    @error('first_name')
-                        <p>{{ $message }}</p>
-                    @enderror
-                    @error('last_name')
-                        <p>{{ $message }}</p>
-                    @enderror
+                <div class="form__error-group">
+                    <div class="form__error">
+                        @error('first_name')
+                            <p>{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form__error">
+                        @error('last_name')
+                            <p>{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,13 +78,21 @@
                 <span class="form__label--required">＊</span>
             </div>
             <div class="form__group-content">
-                <div class="form__input--text">
-                    <input type="tel" name="tel" placeholder="09012345678" value="{{ old('tel') }}">
+                <div class="form__input--text-tel">
+                    <input type="tel" name="tel01" placeholder="090" value="{{ old('tel01') }}">
+                    <span>-</span>
+                    <input type="tel" name="tel02" placeholder="1234" value="{{ old('tel02') }}">
+                    <span>-</span>
+                    <input type="tel" name="tel03" placeholder="5678" value="{{ old('tel03') }}">
                 </div>
                 <div class="form__error">
-                    @error('tel')
-                        <p>{{ $message }}</p>
-                    @enderror
+                    @if ($errors->has('tel01'))
+                        <p>{{ $errors->first('tel01') }}</p>
+                    @elseif ($errors->has('tel02'))
+                        <p>{{ $errors->first('tel02') }}</p>
+                    @elseif ($errors->has('tel03'))
+                        <p>{{ $errors->first('tel03') }}</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -145,7 +157,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea class="form__textarea" name="detail" placeholder="お問い合わせ内容" required>{{ old('detail') }}</textarea>
+                    <textarea class="form__textarea" name="detail" placeholder="お問い合わせ内容">{{ old('detail') }}</textarea>
                 </div>
                 <div class="form__error">
                     @error('detail')

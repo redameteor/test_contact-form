@@ -5,15 +5,16 @@ body {
 
 .register-form__content {
     margin: 60px auto;
-    padding: 30px;
-    max-width: 700px;
+    padding: 50px;
+    max-width: 800px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .register-form__heading {
-    margin-bottom: 40px;
+    margin-top: 60px;
+    margin-bottom: 20px;
     text-align: center;
     color: #684e47;
     font-size: 25px;
@@ -26,26 +27,29 @@ body {
 }
 
 .form__group {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-    align-items: center;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .form__group-title {
-    width: auto;
-    min-width: 120px;
-    margin-right: 20px;
-    white-space: nowrap;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
+}
+
+.form__label--item {
+    color: #684e47;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 .form__group-content {
-    flex: 1;
+    width: 100%;
 }
 
 .form__error {
-    width: 100%;
-    margin-left: 30%;
+    margin-left: 0;
+    margin-top: 5px;
     color: #ff0000;
     font-size: 12px;
 }
@@ -54,6 +58,9 @@ body {
     height: 40px;
     width: 100%;
     box-sizing: border-box;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .form__button {

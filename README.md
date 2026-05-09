@@ -29,6 +29,8 @@
 - cp -r ./vendor/laravel-lang/lang/src/ja ./resources/lang/
 - php artisan make:controller AuthController
 - php artisan make:request ContactRequest
+- php artisan make:factory ContactFactory
+-  php artisan db:seed
 
 ## 使用技術
 - Laravel 8.83.8

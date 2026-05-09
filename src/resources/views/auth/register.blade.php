@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
+<div class="register-form__heading">
+    <h2>Resister</h2>
+</div>
 <div class="register-form__content">
-    <div class="register-form__heading">
-        <h2>Resister</h2>
-    </div>
     <form class="form" action="/register" method="post">
     @csrf
         <div class="form__group">

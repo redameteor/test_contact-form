@@ -51,7 +51,7 @@
             <th class="admin-table__label">性別</th>
             <th class="admin-table__label">メールアドレス</th>
             <th class="admin-table__label">お問い合わせの種類</th>
-            <th class="admin-table__label"></th> {{-- 詳細ボタン用 --}}
+            <th class="admin-table__label">{{-- 詳細ボタン用 --}}</th>
         </tr>
         @foreach($contacts as $contact)
         <tr class="admin-table__row">
